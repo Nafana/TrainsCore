@@ -1,0 +1,7 @@
+main: net.nafana.TrainsCore
+name: TrainsCore
+version: '1.0'
+description: The core for all train mechanics on the sever
+load: POSTWORLD
+author: Nafana
+website: spigotmc.org
