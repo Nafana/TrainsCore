@@ -1,7 +1,13 @@
-main: net.nafana.TrainsCore
+main: net.nafana.TrainsCore.TrainsCore
 name: TrainsCore
-version: '1.0'
-description: The core for all train mechanics on the sever
+version: '1.0-SNAPSHOT'
+description: The core for all train mechanics on the server
 load: POSTWORLD
 author: Nafana
 website: spigotmc.org
+depend: [WorldEdit]
+
+commands:
+   spawntrain:
+      description: Spawns in a train at your location.
+      usage: /spawntrain <TRAIN_NAME>
