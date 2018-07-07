@@ -50,13 +50,17 @@
       <artifactId>worldedit-bukkit</artifactId>
       <version>6.1.1-SNAPSHOT</version>
     </dependency>
-    <!--Bukkit API
     <dependency>
         <groupId>org.bukkit</groupId>
         <artifactId>bukkit</artifactId>
         <version>1.12.2-R0.1-SNAPSHOT</version>
         <scope>provided</scope>
-    </dependency> -->
+    </dependency>
+    <dependency>
+      <groupId>org.bukkit</groupId>
+      <artifactId>craftbukkit</artifactId>
+      <version>1.12.1-R0.1-SNAPSHOT</version>
+    </dependency>
     <!--Spigot API and NMS
     <dependency>
         <groupId>org.spigotmc</groupId>
@@ -105,5 +109,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

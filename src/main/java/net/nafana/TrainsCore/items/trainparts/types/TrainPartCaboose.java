@@ -1,6 +1,5 @@
 package net.nafana.TrainsCore.items.trainparts.types;
 
-import net.nafana.TrainsCore.items.TrainModel;
 import net.nafana.TrainsCore.items.TrainPart;
 
 /**
@@ -9,7 +8,7 @@ import net.nafana.TrainsCore.items.TrainPart;
 
 /** TODO: Implement the TrainPartCaboose class **/
 public class TrainPartCaboose extends TrainPart {
-    public TrainPartCaboose(String trainPartName, TrainModel trainPartModel, float partWeight) {
+    public TrainPartCaboose(String trainPartName, String trainPartModel, float partWeight) {
         super(trainPartName, trainPartModel, partWeight);
     }
 }

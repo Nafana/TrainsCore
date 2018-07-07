@@ -1,6 +1,5 @@
 package net.nafana.TrainsCore.items.trainparts.types;
 
-import net.nafana.TrainsCore.items.TrainModel;
 import net.nafana.TrainsCore.items.TrainPart;
 
 /**
@@ -11,7 +10,7 @@ public class TrainPartPilot extends TrainPart {
     private float maxSpeed;
     private float maxTowWeight;
 
-    public TrainPartPilot(String trainPartName, TrainModel trainPartModel, float partWeight) {
+    public TrainPartPilot(String trainPartName, String trainPartModel, float partWeight) {
         super(trainPartName, trainPartModel, partWeight);
     }
 
