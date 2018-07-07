@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by Nafana on 2018-07-03.
  */
-public class TrainsLoader {
+public final class TrainsLoader {
 
     private List<TrainPart> cachedTrainPartsList = new ArrayList<>();
 
@@ -70,8 +70,7 @@ public class TrainsLoader {
 
     /** Spawns a TrainPart object into the given location. **/
     public void spawnTrainPart(TrainPart trainPart, Location location, boolean ignoreAirBlocks) {
-        File trainPartSchematic = new File(trainPart.getPartModel().getBuildPathForModel());
-        System.out.println(trainPart.getPartModel().getBuildPathForModel());
+        File trainPartSchematic = new File(trainPart.getBuildPathForModel());
         if (!trainPartSchematic.exists()) { return; }
 
         com.sk89q.worldedit.Vector spawnPosition = new com.sk89q.worldedit.Vector(location.getX(), location.getY(), location.getZ());
