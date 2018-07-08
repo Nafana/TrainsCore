@@ -1,6 +1,7 @@
 package net.nafana.TrainsCore.commands;
 
 import net.nafana.TrainsCore.TrainsCore;
+import net.nafana.TrainsCore.gui.GUI;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
