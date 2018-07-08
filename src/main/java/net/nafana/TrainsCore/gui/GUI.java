@@ -159,7 +159,7 @@ public class GUI {
         }
     }
 
-    public void fillAlongRow(Material material, int quantity ,int initialPosition, int finalPosition) {
+    public void fillAlongRow(Material material, int quantity, int initialPosition, int finalPosition) {
         if (!isCorrectBounds(initialPosition, finalPosition)) {return;}
         ItemStack stack = new ItemStack(material, quantity);
         for (int i = initialPosition; i <= finalPosition; i++) {
@@ -180,7 +180,7 @@ public class GUI {
     }
 
     //** Fills the inventory with a certain item over the columns. **//
-    public void fillAlongColumn(Material material, int quantity ,int initialPosition, int finalPosition) {
+    public void fillAlongColumn(Material material, int quantity, int initialPosition, int finalPosition) {
         if (!isCorrectBounds(initialPosition, finalPosition)) {return;}
         ItemStack stack = new ItemStack(material, quantity);
         Vector2D initialPositionVector = getInventoryPosition(initialPosition);
