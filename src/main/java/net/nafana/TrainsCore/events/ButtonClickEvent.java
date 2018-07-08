@@ -1,14 +1,47 @@
 package net.nafana.TrainsCore.events;
 
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryAction;
+import net.nafana.TrainsCore.gui.buttons.Button;
+import org.bukkit.event.Cancellable;
+import org.bukkit.event.Event;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.InventoryView;
 
-public class ButtonClickEvent extends InventoryClickEvent {
+public class ButtonClickEvent extends Event implements Cancellable {
 
-    public ButtonClickEvent(InventoryView view, InventoryType.SlotType type, int slot, ClickType click, InventoryAction action) {
-        super(view, type, slot, click, action);
+    private static final HandlerList handlers = new HandlerList();
+    private InventoryClickEvent event;
+    private Button buttonClicked;
+    private boolean cancelled;
+
+    public ButtonClickEvent (InventoryClickEvent event, Button buttonClicked) {
+        this.event = event;
+        this.buttonClicked = buttonClicked;
+    }
+
+    public InventoryClickEvent getInventoryClickEvent() {
+        return this.event;
+    }
+
+    public Button getButtonClicked() {
+        return this.buttonClicked;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return cancelled;
+    }
+
+    @Override
+    public void setCancelled(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    @Override
+    public HandlerList getHandlers() {
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList() {
+        return handlers;
     }
 }

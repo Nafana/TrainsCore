@@ -1,4 +1,4 @@
-package net.nafana.TrainsCore.data.gui.buttons;
+package net.nafana.TrainsCore.gui.buttons;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 

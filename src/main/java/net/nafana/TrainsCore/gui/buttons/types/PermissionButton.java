@@ -1,8 +1,8 @@
-package net.nafana.TrainsCore.data.gui.buttons.types;
+package net.nafana.TrainsCore.gui.buttons.types;
 
 import net.nafana.TrainsCore.data.PlayerPermission;
-import net.nafana.TrainsCore.data.gui.buttons.Button;
-import net.nafana.TrainsCore.data.gui.buttons.IButtonAction;
+import net.nafana.TrainsCore.gui.buttons.Button;
+import net.nafana.TrainsCore.gui.buttons.IButtonAction;
 import org.bukkit.inventory.ItemStack;
 
 public class PermissionButton extends Button {
@@ -13,4 +13,9 @@ public class PermissionButton extends Button {
         super(buttonModel, action);
         permission = inputPermission;
     }
+
+    public PlayerPermission getPlayerPermission(){
+        return permission;
+    }
+
 }
