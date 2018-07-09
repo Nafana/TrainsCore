@@ -110,8 +110,10 @@ public class TrainsCore extends JavaPlugin {
         debugGUI.setItemAtIndex(econButton, 4);
         debugGUI.fillAlongRow(new ItemStack(Material.STAINED_GLASS_PANE, 1, Byte.parseByte("2")), 18, 26);
 
+        MenuGUI menu = new MenuGUI();
+
         guiManager.addGUI(debugGUI, "DebugGUI");
-        guiManager.addGUI(MenuGUI.build(), "PLAYERStats");
+        guiManager.addGUI(menu.build(), "PLAYERStats");
     }
 
     /** Allows you to get the singleton instance of the TrainsLoader **/

@@ -1,48 +1,32 @@
 package net.nafana.TrainsCore.gui.presets;
 
 import net.nafana.TrainsCore.gui.GUI;
+import net.nafana.TrainsCore.gui.TileBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+public class MenuGUI extends TileBuilder {
 
-public class MenuGUI {
+    public GUI build() {
 
-    public static GUI build() {
+        GUI gui = new GUI(3, ChatColor.AQUA + "Menu");
 
-        GUI menu = new GUI(3, ChatColor.DARK_PURPLE + "Menu");
+        ItemStack profile = new ItemStack(Material.SKULL_ITEM);
 
-        ItemStack head = new ItemStack(Material.SKULL);
-        addLore(head,
-                ChatColor.GRAY + "Player Stats and Information:",
-                ChatColor.GOLD + "Rank: " + ChatColor.BOLD + "RANK",
-                ChatColor.AQUA + "In Game Time: TIME",
-                ChatColor.RED + "Total Kills: KILLS",
-                ChatColor.DARK_RED + "Total Deaths: DEATHS");
-        setName(head, "PLAYER's Stats");
+        this.setDisplayName(profile, ChatColor.GREEN + "PLAYER NAME");
+        this.setLore(profile,
+                ChatColor.GRAY + "\nPLAYER NAME's stats and information. This ",
+                ChatColor.GRAY + "menu can be viewed at any time using /menu\n",
+                ChatColor.GOLD + "Rank: RANK",
+                ChatColor.AQUA + "In-Game Time: TIME",
+                ChatColor.LIGHT_PURPLE + "Trains: AMOUNT",
+                ChatColor.RED + "Kills: KILLS",
+                ChatColor.DARK_RED + "Deaths: DEATHS"
+        );
 
-        menu.setItemAtIndex(head, 10);
+        gui.setItemAtIndex(profile, 10);
 
-        return menu;
-    }
-
-    private static void addLore(ItemStack item, String... lines) {
-
-        ItemMeta meta = item.getItemMeta();
-        List<String> lore = new ArrayList<>(Arrays.asList(lines));
-        meta.setLore(lore);
-        item.setItemMeta(meta);
-    }
-
-    private static void setName(ItemStack item, String name) {
-
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName(name);
-        item.setItemMeta(meta);
-
+        return gui;
     }
 }
