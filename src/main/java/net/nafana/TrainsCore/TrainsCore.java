@@ -3,6 +3,7 @@ package net.nafana.TrainsCore;
 import net.nafana.TrainsCore.commands.SpawnTrainCommand;
 import net.nafana.TrainsCore.commands.debug.GUIDebugCommand;
 import net.nafana.TrainsCore.commands.gui.PlayerMenu;
+import net.nafana.TrainsCore.commands.gui.PlayerShop;
 import net.nafana.TrainsCore.data.ConfigurationFetcher;
 import net.nafana.TrainsCore.data.PlayerPermission;
 import net.nafana.TrainsCore.data.configurations.TrainPartsConfiguration;
@@ -11,6 +12,7 @@ import net.nafana.TrainsCore.gui.GUI;
 import net.nafana.TrainsCore.gui.GUIManager;
 import net.nafana.TrainsCore.gui.buttons.types.EconomyButton;
 import net.nafana.TrainsCore.gui.presets.MenuGUI;
+import net.nafana.TrainsCore.gui.presets.ShopGUI;
 import net.nafana.TrainsCore.items.TrainPart;
 import net.nafana.TrainsCore.listeners.*;
 import org.bukkit.ChatColor;
@@ -68,6 +70,7 @@ public class TrainsCore extends JavaPlugin {
         this.getCommand("spawntrain").setExecutor(new SpawnTrainCommand());
         this.getCommand("guidebug").setExecutor(new GUIDebugCommand());
         this.getCommand("menu").setExecutor(new PlayerMenu());
+        this.getCommand("shop").setExecutor(new PlayerShop());
     }
 
     /** Registers the Listeners for the TrainsCore plugin **/
@@ -111,9 +114,11 @@ public class TrainsCore extends JavaPlugin {
         debugGUI.fillAlongRow(new ItemStack(Material.STAINED_GLASS_PANE, 1, Byte.parseByte("2")), 18, 26);
 
         MenuGUI menu = new MenuGUI();
+        ShopGUI shop = new ShopGUI();
 
         guiManager.addGUI(debugGUI, "DebugGUI");
         guiManager.addGUI(menu.build(), "PLAYERStats");
+        guiManager.addGUI(shop.build(), "Shop");
     }
 
     /** Allows you to get the singleton instance of the TrainsLoader **/

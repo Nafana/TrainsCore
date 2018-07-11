@@ -22,3 +22,6 @@ commands:
   menu:
     description: Opens the player menu
     usage: /menu
+  shop:
+    description: Opens the player shop
+    usage: /shop
