@@ -1,10 +1,7 @@
 package net.nafana.TrainsCore.gui;
 
-import net.nafana.TrainsCore.listeners.InventoryDragItemListener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
 
 import java.util.HashMap;
 import java.util.Map;
