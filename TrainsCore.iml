@@ -9,7 +9,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -42,5 +42,6 @@
     <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.bukkit:bukkit:1.12.2-R0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: org.bukkit:craftbukkit:1.12.1-R0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.8.0" level="project" />
   </component>
 </module>
