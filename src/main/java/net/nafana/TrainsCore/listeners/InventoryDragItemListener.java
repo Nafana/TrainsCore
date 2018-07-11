@@ -14,5 +14,4 @@ public class InventoryDragItemListener implements Listener {
     public void onDragItemEvent(InventoryDragEvent event) {
         TrainsCore.getGuiManager().broadcastInventoryClickEvent(event);
     }
-
 }

@@ -12,8 +12,13 @@ public abstract class Button {
         this.buttonAction = action;
     }
 
-    public ItemStack getButtonModel () { return this.buttonModel;}
+    // What item represents the button
+    public ItemStack getButtonModel () {
+        return this.buttonModel;
+    }
 
-    public IButtonAction buttonAction() {return this.buttonAction; }
-
+    // Get the action of the button when clicked
+    public IButtonAction buttonAction() {
+        return this.buttonAction;
+    }
 }

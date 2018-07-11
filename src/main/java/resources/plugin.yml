@@ -10,9 +10,18 @@ depend: [WorldEdit]
 # Comments!
 
 commands:
-   spawntrain:
-      description: Spawns in a train at your location.
-      usage: /spawntrain <TRAIN_NAME>
-   addtrain:
-      description: Adds a train to the configuration.
-      usage: /addtrain <TRAIN_NAME>
+  spawntrain:
+    description: Spawns in a train at your location.
+    usage: /spawntrain <TRAIN_NAME>
+  addtrain:
+    description: Adds a train to the configuration.
+    usage: /addtrain <TRAIN_NAME>
+  guidebug:
+    description: Debug GUI menu
+    usage: /guidebug
+  menu:
+    description: Opens the player menu
+    usage: /menu
+  shop:
+    description: Opens the player shop
+    usage: /shop
