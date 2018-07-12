@@ -6,8 +6,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Creates the Menu GUI for players in the game
+ *
+ * @author Created by GrimlyTwisted on 2018-07-011
+ */
 public class MenuGUI implements Buildable {
 
+    /**
+     * Builds and returns a GUI on build method called
+     *
+     * @return GUI that is built
+     */
     @Override
     public GUI build() {
 

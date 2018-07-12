@@ -8,8 +8,18 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Creates the Shop GUI for players in the game
+ *
+ * @author Created by GrimlyTwisted on 2018-07-011
+ */
 public class ShopGUI implements Buildable {
 
+    /**
+     * Builds and returns a GUI on build method called
+     *
+     * @return GUI that is built
+     */
     @Override
     public GUI build() {
 
@@ -41,7 +51,7 @@ public class ShopGUI implements Buildable {
         gui.setItemAtIndex(new EconomyButton(next, event ->
                 event.getWhoClicked().sendMessage("Woops! Cannot go to next page!"), PlayerPermission.BUY_ITEM), 53);
 
-        gui.fillAlongRow(new ItemStack(Material.STAINED_GLASS), 9, 43);
+        gui.fillRect(new ItemStack(Material.STAINED_GLASS), 9, 43);
 
         return gui;
 

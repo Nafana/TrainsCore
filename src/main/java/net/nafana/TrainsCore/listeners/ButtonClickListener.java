@@ -6,8 +6,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+/**
+ * The type Button click listener.
+ *
+ * @author Created by Nafana on 2018-07-11
+ */
 public class ButtonClickListener implements Listener {
 
+    /**
+     * On button click.
+     *
+     * @param e the e
+     */
     @EventHandler
     public void onButtonClick(ButtonClickEvent e) {
         if (e.getButtonClicked() instanceof PermissionButton) {

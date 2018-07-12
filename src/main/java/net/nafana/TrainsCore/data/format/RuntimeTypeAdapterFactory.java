@@ -16,23 +16,19 @@
 
 package net.nafana.TrainsCore.data.format;
 
-import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
+import com.google.gson.*;
 import com.google.gson.internal.Streams;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
+import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
+ * @author Created by Nafana on 2018-07-11
+ *
  * Adapts values whose runtime type may differ from their declaration type. This
  * is necessary when a field's type is not the same type that GSON should create
  * when deserializing that field. For example, consider these types:
@@ -56,7 +52,7 @@ import com.google.gson.stream.JsonWriter;
  *     Shape bottomShape;
  *     Shape topShape;
  *   }
- * }</pre>
+ * }*</pre>
  * <p>Without additional type information, the serialized JSON is ambiguous. Is
  * the bottom shape in this drawing a rectangle or a diamond? <pre>   {@code
  *   {
@@ -71,7 +67,7 @@ import com.google.gson.stream.JsonWriter;
  *       "x": 4,
  *       "y": 1
  *     }
- *   }}</pre>
+ *   }}*</pre>
  * This class addresses this problem by adding type information to the
  * serialized JSON and honoring that type information when the JSON is
  * deserialized: <pre>   {@code
@@ -89,9 +85,9 @@ import com.google.gson.stream.JsonWriter;
  *       "x": 4,
  *       "y": 1
  *     }
- *   }}</pre>
+ *   }}*</pre>
  * Both the type field name ({@code "type"}) and the type labels ({@code
- * "Rectangle"}) are configurable.
+ * "Rectangle"}*) are configurable.
  *
  * <h3>Registering Types</h3>
  * Create a {@code RuntimeTypeAdapterFactory} by passing the base type and type field
@@ -99,7 +95,7 @@ import com.google.gson.stream.JsonWriter;
  * field name, {@code "type"} will be used. <pre>   {@code
  *   RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory
  *       = RuntimeTypeAdapterFactory.of(Shape.class, "type");
- * }</pre>
+ * }*</pre>
  * Next register all of your subtypes. Every subtype must be explicitly
  * registered. This protects your application from injection attacks. If you
  * don't supply an explicit type label, the type's simple name will be used.
@@ -107,19 +103,21 @@ import com.google.gson.stream.JsonWriter;
  *   shapeAdapter.registerSubtype(Rectangle.class, "Rectangle");
  *   shapeAdapter.registerSubtype(Circle.class, "Circle");
  *   shapeAdapter.registerSubtype(Diamond.class, "Diamond");
- * }</pre>
+ * }*</pre>
  * Finally, register the type adapter factory in your application's GSON builder:
  * <pre>   {@code
  *   Gson gson = new GsonBuilder()
  *       .registerTypeAdapterFactory(shapeAdapterFactory)
  *       .create();
- * }</pre>
+ * }*</pre>
  * Like {@code GsonBuilder}, this API supports chaining: <pre>   {@code
  *   RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory = RuntimeTypeAdapterFactory.of(Shape.class)
  *       .registerSubtype(Rectangle.class)
  *       .registerSubtype(Circle.class)
  *       .registerSubtype(Diamond.class);
- * }</pre>
+ * }*</pre>
+ *
+ * @param <T> the type parameter
  */
 public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     private final Class<?> baseType;
@@ -137,7 +135,12 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
 
     /**
      * Creates a new runtime type adapter using for {@code baseType} using {@code
-     * typeFieldName} as the type field name. Type field names are case sensitive.
+     * typeFieldName}* as the type field name. Type field names are case sensitive.
+     *
+     * @param <T>           the type parameter
+     * @param baseType      the base type
+     * @param typeFieldName the type field name
+     * @return the runtime type adapter factory
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType, String typeFieldName) {
         return new RuntimeTypeAdapterFactory<T>(baseType, typeFieldName);
@@ -146,6 +149,10 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
     /**
      * Creates a new runtime type adapter for {@code baseType} using {@code "type"} as
      * the type field name.
+     *
+     * @param <T>      the type parameter
+     * @param baseType the base type
+     * @return the runtime type adapter factory
      */
     public static <T> RuntimeTypeAdapterFactory<T> of(Class<T> baseType) {
         return new RuntimeTypeAdapterFactory<T>(baseType, "type");
@@ -155,8 +162,10 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
      * Registers {@code type} identified by {@code label}. Labels are case
      * sensitive.
      *
-     * @throws IllegalArgumentException if either {@code type} or {@code label}
-     *     have already been registered on this type adapter.
+     * @param type  the type
+     * @param label the label
+     * @return the runtime type adapter factory
+     * @throws IllegalArgumentException if either {@code type} or {@code label}     have already been registered on this type adapter.
      */
     public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type, String label) {
         if (type == null || label == null) {
@@ -172,10 +181,11 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
 
     /**
      * Registers {@code type} identified by its {@link Class#getSimpleName simple
-     * name}. Labels are case sensitive.
+     * name}*. Labels are case sensitive.
      *
-     * @throws IllegalArgumentException if either {@code type} or its simple name
-     *     have already been registered on this type adapter.
+     * @param type the type
+     * @return the runtime type adapter factory
+     * @throws IllegalArgumentException if either {@code type} or its simple name     have already been registered on this type adapter.
      */
     public RuntimeTypeAdapterFactory<T> registerSubtype(Class<? extends T> type) {
         return registerSubtype(type, type.getSimpleName());
@@ -197,7 +207,8 @@ public final class RuntimeTypeAdapterFactory<T> implements TypeAdapterFactory {
         }
 
         return new TypeAdapter<R>() {
-            @Override public R read(JsonReader in) throws IOException {
+            @Override
+            public R read(JsonReader in) {
                 JsonElement jsonElement = Streams.parse(in);
                 JsonElement labelJsonElement = jsonElement.getAsJsonObject().remove(typeFieldName);
                 if (labelJsonElement == null) {

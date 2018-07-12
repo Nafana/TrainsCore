@@ -6,6 +6,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * The type Player shop.
+ *
+ * @author Created by GrimlyTwisted on 2018-07-11
+ */
 public class PlayerShop implements CommandExecutor {
 
     @Override

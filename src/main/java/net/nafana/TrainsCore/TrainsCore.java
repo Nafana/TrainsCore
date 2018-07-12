@@ -14,7 +14,9 @@ import net.nafana.TrainsCore.gui.buttons.types.EconomyButton;
 import net.nafana.TrainsCore.gui.presets.MenuGUI;
 import net.nafana.TrainsCore.gui.presets.ShopGUI;
 import net.nafana.TrainsCore.items.TrainPart;
-import net.nafana.TrainsCore.listeners.*;
+import net.nafana.TrainsCore.listeners.ButtonClickListener;
+import net.nafana.TrainsCore.listeners.InventoryClickListener;
+import net.nafana.TrainsCore.listeners.InventoryDragItemListener;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -24,15 +26,64 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Level;
 
+/**
+ * @author Created by Nafana on day 1
+ */
 public class TrainsCore extends JavaPlugin {
 
-    /** Singleton instances of the public classes **/
+    private final static String schematicsFolderName = "\\trainparts_schematics";
+    /**
+     * Singleton instances of the public classes
+     **/
     private static TrainsLoader trainsLoader;
     private static TrainsCore trainsCore;
     private static ConfigurationFetcher configFetcher;
     private static GUIManager guiManager;
 
-    private final static String schematicsFolderName = "\\trainparts_schematics";
+    /**
+     * Allows you to get the singleton instance of the TrainsLoader
+     *
+     * @return the trains loader
+     */
+    public static TrainsLoader getTrainsLoader() {
+        return trainsLoader;
+    }
+
+    /**
+     * Allows you to get the singleton instance of the TrainsCore
+     *
+     * @return the trains core
+     */
+    public static TrainsCore getTrainsCore() {
+        return trainsCore;
+    }
+
+    /**
+     * Allows you to get the singleton instance of the ConfigurationFetcher
+     *
+     * @return the config fetcher
+     */
+    public static ConfigurationFetcher getConfigFetcher() {
+        return configFetcher;
+    }
+
+    /**
+     * Allows you to get the singleton instance of the GUIManager
+     *
+     * @return the gui manager
+     */
+    public static GUIManager getGuiManager() {
+        return guiManager;
+    }
+
+    /**
+     * Schematics resource folder name string.
+     *
+     * @return the string
+     */
+    public static String schematicsResourceFolderName() {
+        return schematicsFolderName;
+    }
 
     // Ran when the plugin is enabled
     public void onEnable() {
@@ -47,7 +98,7 @@ public class TrainsCore extends JavaPlugin {
     }
 
     // Ran when the plugin is disabled
-    public void onDisable () {
+    public void onDisable() {
 
     }
 
@@ -65,7 +116,9 @@ public class TrainsCore extends JavaPlugin {
         }
     }
 
-    /** Registers the commands for the TrainsCore plugin **/
+    /**
+     * Registers the commands for the TrainsCore plugin
+     **/
     private void registerCommands() {
         this.getCommand("spawntrain").setExecutor(new SpawnTrainCommand());
         this.getCommand("guidebug").setExecutor(new GUIDebugCommand());
@@ -73,7 +126,9 @@ public class TrainsCore extends JavaPlugin {
         this.getCommand("shop").setExecutor(new PlayerShop());
     }
 
-    /** Registers the Listeners for the TrainsCore plugin **/
+    /**
+     * Registers the Listeners for the TrainsCore plugin
+     **/
     private void registerListeners() {
         this.getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         this.getServer().getPluginManager().registerEvents(new InventoryDragItemListener(), this);
@@ -96,7 +151,9 @@ public class TrainsCore extends JavaPlugin {
 
     }
 
-    /** Registers non default configuration files, such as JSON or XML **/
+    /**
+     * Registers non default configuration files, such as JSON or XML
+     **/
     private void registerExternalConfigs() {
         configFetcher = new ConfigurationFetcher();
         configFetcher.addConfiguration(new TrainPartsConfiguration());
@@ -111,7 +168,7 @@ public class TrainsCore extends JavaPlugin {
             event.getWhoClicked().sendMessage("You pressed the button!");
         }, PlayerPermission.BUY_ITEM);
         debugGUI.setItemAtIndex(econButton, 4);
-        debugGUI.fillAlongRow(new ItemStack(Material.STAINED_GLASS_PANE, 1, Byte.parseByte("2")), 18, 26);
+        debugGUI.fillRect(new ItemStack(Material.STAINED_GLASS_PANE, 1, Byte.parseByte("2")), 18, 26);
 
         MenuGUI menu = new MenuGUI();
         ShopGUI shop = new ShopGUI();
@@ -119,26 +176,6 @@ public class TrainsCore extends JavaPlugin {
         guiManager.addGUI(debugGUI, "DebugGUI");
         guiManager.addGUI(menu.build(), "PLAYERStats");
         guiManager.addGUI(shop.build(), "Shop");
-    }
-
-    /** Allows you to get the singleton instance of the TrainsLoader **/
-    public static TrainsLoader getTrainsLoader() {
-        return trainsLoader;
-    }
-
-    /** Allows you to get the singleton instance of the TrainsCore **/
-    public static TrainsCore getTrainsCore() {
-        return trainsCore;
-    }
-
-    /** Allows you to get the singleton instance of the ConfigurationFetcher **/
-    public static ConfigurationFetcher getConfigFetcher() {return configFetcher;}
-
-    /** Allows you to get the singleton instance of the GUIManager **/
-    public static GUIManager getGuiManager() {return guiManager; }
-
-    public static String schematicsResourceFolderName() {
-        return schematicsFolderName;
     }
 
 }
