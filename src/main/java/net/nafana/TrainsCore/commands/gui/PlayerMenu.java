@@ -6,6 +6,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * The type Player menu.
+ *
+ * @author Created by GrimlyTwisted on 2018-07-11
+ */
 public class PlayerMenu implements CommandExecutor {
 
     @Override

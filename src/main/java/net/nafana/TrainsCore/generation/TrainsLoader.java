@@ -23,20 +23,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Nafana on 2018-07-03.
+ * @author Created by Nafana on 2018-07-03.
  */
 public final class TrainsLoader {
 
     private List<TrainPart> cachedTrainPartsList = new ArrayList<>();
 
+    /**
+     * Instantiates a new Trains loader.
+     */
     public TrainsLoader() {}
 
-    /** Adds a train part to the cached list **/
+    /**
+     * Adds a train part to the cached list  @param trainPart the train part
+     */
     public void addTrainPart(TrainPart trainPart) {
         this.cachedTrainPartsList.add(trainPart);
     }
 
-    /** Removes a train from the cached storage by name**/
+    /**
+     * Removes a train from the cached storage by name @param trainPartName the train part name
+     */
     public void removeTrainPart(String trainPartName) {
         for (TrainPart part: cachedTrainPartsList) {
             if (part.getPartName().equals(trainPartName)) {
@@ -45,13 +52,19 @@ public final class TrainsLoader {
         }
     }
 
-    /** Removes a train from the cached storage by object**/
+    /**
+     * Removes a train from the cached storage by object @param trainPart the train part
+     */
     public void removeTrainPart(TrainPart trainPart) {
-        if (this.cachedTrainPartsList.contains(trainPart)) {
-            this.cachedTrainPartsList.remove(trainPart);
-        }
+        this.cachedTrainPartsList.remove(trainPart);
     }
 
+    /**
+     * Gets train part from name.
+     *
+     * @param trainPartName the train part name
+     * @return the train part from name
+     */
     public TrainPart getTrainPartFromName(String trainPartName) {
         for (TrainPart part: cachedTrainPartsList) {
             if (part.getPartName().equals(trainPartName)) {
@@ -61,14 +74,24 @@ public final class TrainsLoader {
         return null;
     }
 
-    /** Spawns a TrainPart object from it's name into the given location. **/
+    /**
+     * Spawns a TrainPart object from it's name into the given location.  @param trainPartName the train part name
+     *
+     * @param location        the location
+     * @param ignoreAirBlocks the ignore air blocks
+     */
     public void spawnTrainPart(String trainPartName, Location location, boolean ignoreAirBlocks) {
         TrainPart part = getTrainPartFromName(trainPartName);
         if (part == null) { return; }
         spawnTrainPart(part, location, ignoreAirBlocks);
     }
 
-    /** Spawns a TrainPart object into the given location. **/
+    /**
+     * Spawns a TrainPart object into the given location.  @param trainPart the train part
+     *
+     * @param location        the location
+     * @param ignoreAirBlocks the ignore air blocks
+     */
     public void spawnTrainPart(TrainPart trainPart, Location location, boolean ignoreAirBlocks) {
         File trainPartSchematic = new File(trainPart.getBuildPathForModel());
         if (!trainPartSchematic.exists()) { return; }

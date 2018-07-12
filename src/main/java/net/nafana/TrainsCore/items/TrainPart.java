@@ -3,7 +3,7 @@ package net.nafana.TrainsCore.items;
 import net.nafana.TrainsCore.TrainsCore;
 
 /**
- * Created by Nafana on 2018-07-03.
+ * @author Created by Nafana on 2018-07-03.
  */
 public abstract class TrainPart {
 
@@ -20,25 +20,49 @@ public abstract class TrainPart {
 
     private float weight;
 
+    /**
+     * Instantiates a new Train part.
+     *
+     * @param trainPartName  the train part name
+     * @param trainPartModel the train part model
+     * @param partWeight     the part weight
+     */
     public TrainPart(String trainPartName, String trainPartModel, float partWeight) {
         this.partModel = trainPartModel;
         this.partName = trainPartName;
         this.weight = partWeight;
     }
 
+    /**
+     * Gets part model.
+     *
+     * @return the part model
+     */
     public String getPartModel() {
         return partModel;
     }
 
+    /**
+     * Gets part name.
+     *
+     * @return the part name
+     */
     public String getPartName() {
         return partName;
     }
 
+    /**
+     * Gets weight.
+     *
+     * @return the weight
+     */
     public float getWeight() {
         return weight;
     }
 
-    /** Gets the path to the schematic file **/
+    /**
+     * Gets the path to the schematic file  @return the build path for model
+     */
     public String getBuildPathForModel() {
         return TrainsCore.getTrainsCore().getDataFolder().toPath() + TrainsCore.schematicsResourceFolderName()
                 + "\\" + this.partModel + ".schematic";

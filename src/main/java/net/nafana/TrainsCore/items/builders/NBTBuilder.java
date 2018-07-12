@@ -10,12 +10,23 @@ import java.util.Map;
 
 /**
  * Implemented by Nafana on 2018-07-05.
- * Created by TreeMC - https://www.mc-market.org/members/62796/
+ * @author Created by TreeMC - https://www.mc-market.org/members/62796/
  */
 public class NBTBuilder {
 
+    /**
+     * Instantiates a new NBT builder.
+     */
     public NBTBuilder () {}
 
+    /**
+     * Sets value.
+     *
+     * @param item  the item
+     * @param key   the key
+     * @param value the value
+     * @return the value
+     */
     public ItemStack setValue(ItemStack item, String key, NBTBase value) {
         net.minecraft.server.v1_12_R1.ItemStack stack;
         if (!item.hasItemMeta()) {
@@ -27,6 +38,13 @@ public class NBTBuilder {
         return CraftItemStack.asBukkitCopy(stack);
     }
 
+    /**
+     * Gets value.
+     *
+     * @param item the item
+     * @param key  the key
+     * @return the value
+     */
     public NBTBase getValue(ItemStack item, String key) {
         NBTTagCompound tag;
         net.minecraft.server.v1_12_R1.ItemStack stack;
@@ -36,6 +54,13 @@ public class NBTBuilder {
         return (tag = (stack = CraftItemStack.asNMSCopy(item)).getTag()) != null ? tag.get(key) : null;
     }
 
+    /**
+     * Gets list value.
+     *
+     * @param item the item
+     * @param key  the key
+     * @return the list value
+     */
     public NBTTagList getListValue(ItemStack item, String key) {
         NBTTagCompound itemTag;
         net.minecraft.server.v1_12_R1.ItemStack stack;
@@ -45,6 +70,14 @@ public class NBTBuilder {
         return (itemTag = (stack = CraftItemStack.asNMSCopy(item)).getTag()) != null ? itemTag.getList(key, 0) : null;
     }
 
+    /**
+     * Sets value.
+     *
+     * @param item the item
+     * @param key  the key
+     * @param data the data
+     * @return the value
+     */
     public ItemStack setValue(ItemStack item, String key, Map<String, NBTBase> data) {
         net.minecraft.server.v1_12_R1.ItemStack stack;
         if (!item.hasItemMeta()) {

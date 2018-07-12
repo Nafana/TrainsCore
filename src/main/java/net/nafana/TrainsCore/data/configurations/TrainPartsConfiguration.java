@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Nafana on 2018-07-03.
+ * @author Created by Nafana on 2018-07-03.
  */
 public class TrainPartsConfiguration extends Configuration {
 
@@ -28,14 +28,22 @@ public class TrainPartsConfiguration extends Configuration {
 
     private RuntimeTypeAdapterFactory<TrainPart> trainAdaptorFactory;
 
+    /**
+     * Instantiates a new Train parts configuration.
+     */
     public TrainPartsConfiguration() {
         super(trainPartsFileName, trainPartsConfigName);
         trainAdaptorFactory = RuntimeTypeAdapterFactory.of(TrainPart.class, "partType")
-            .registerSubtype(TrainPartCaboose.class, TrainPartCaboose.class.getName())
-            .registerSubtype(TrainPartFreightHolder.class, TrainPartFreightHolder.class.getName())
-            .registerSubtype(TrainPartPilot.class, TrainPartPilot.class.getName());
+                .registerSubtype(TrainPartCaboose.class, TrainPartCaboose.class.getName())
+                .registerSubtype(TrainPartFreightHolder.class, TrainPartFreightHolder.class.getName())
+                .registerSubtype(TrainPartPilot.class, TrainPartPilot.class.getName());
     }
 
+    /**
+     * Add train part entry.
+     *
+     * @param trainPart the train part
+     */
     //** Adds a train part to the configuration file, uses a custom adapter factory
     //   to serialize classes that extend TrainPart.class // **/
     public void addTrainPartEntry(TrainPart trainPart) {
@@ -59,7 +67,12 @@ public class TrainPartsConfiguration extends Configuration {
         }
     }
 
-    //** Gets a list of all train parts that were found in the file, uses the custom adapter factory. **//
+    /**
+     * Gets train parts.
+     *
+     * @return the train parts
+     */
+//** Gets a list of all train parts that were found in the file, uses the custom adapter factory. **//
     public List<TrainPart> getTrainParts() {
         Gson gson = new GsonBuilder().registerTypeAdapterFactory(trainAdaptorFactory).create();
         try {
